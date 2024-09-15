@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"math/rand"
+	"strings"
 	"time"
 )
 
@@ -46,7 +47,7 @@ func compareValues(enemyHealth, userTotalAttack int) bool {
 	if pointDifference < 0 {
 		pointDifference = -pointDifference
 	}
-	return pointDifference <= 10
+	return pointDifference >= 10
 }
 
 func getUserAttack() int {
@@ -68,7 +69,7 @@ func getUserAttack() int {
 			continue
 		}
 		fmt.Println("Количество очков твоей атаки:", attackValue)
-		total += 1
+		total += attackValue // add attackValue
 	}
 	return total
 }
@@ -84,7 +85,7 @@ func runGame() bool {
 		fmt.Println("В этот раз не повезло :( Бой проигран.")
 	}
 	answer := input("Чтобы сыграть ещё раз, введи букву [y] или [Y]: ")
-	return answer == "Y"
+	return strings.ToUpper(answer) == "Y"
 }
 
 func main() {
